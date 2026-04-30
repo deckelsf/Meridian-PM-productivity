@@ -639,6 +639,7 @@ code { background: var(--bg); border: 1px solid var(--border); border-radius: 4p
 }
 
 /* ── ROADMAP ── */
+.sort-select { background: var(--bg2); border: 1px solid var(--border2); border-radius: var(--r-sm); padding: 7px 12px; font-family: var(--font); font-size: 13px; font-weight: 600; color: var(--text); outline: none; cursor: pointer; }
 .rdmap-view-btn {
   padding: 5px 12px; border-radius: 6px; border: none;
   font-family: var(--font); font-size: 12px; font-weight: 600;
@@ -1242,19 +1243,19 @@ code { background: var(--bg); border: 1px solid var(--border); border-radius: 4p
         <div class="sms-setup-card" style="margin-top:16px">
           <div class="sms-setup-title">💬 Example commands</div>
           <div style="display:flex;flex-direction:column;gap:6px;margin-top:8px">
-            ${[
-              ["What's my day look like?","Summary of meetings + tasks"],
-              ["Any blockers?","Jira blocker scan"],
-              ["Send my standup","Drafts + sends to Slack"],
-              ["How's the onboarding test doing?","Experiment status"],
-              ["What did I miss in Slack?","Channel digest"],
-              ["Prep me for my 2pm","Meeting prep brief"],
-            ].map(([cmd,desc])=>`<div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--border2)"><code>${cmd}</code><span style="font-size:11px;color:var(--text3)">${desc}</span></div>`).join('')}
+            <div style="display:flex;flex-direction:column;gap:0">
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--border2)"><code>What's my day look like?</code><span style="font-size:11px;color:var(--text3)">Summary of meetings + tasks</span></div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--border2)"><code>Any blockers?</code><span style="font-size:11px;color:var(--text3)">Jira blocker scan</span></div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--border2)"><code>Send my standup</code><span style="font-size:11px;color:var(--text3)">Drafts + sends to Slack</span></div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--border2)"><code>How's the onboarding test doing?</code><span style="font-size:11px;color:var(--text3)">Experiment status</span></div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--border2)"><code>What did I miss in Slack?</code><span style="font-size:11px;color:var(--text3)">Channel digest</span></div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0"><code>Prep me for my 2pm</code><span style="font-size:11px;color:var(--text3)">Meeting prep brief</span></div>
           </div>
         </div>
       </div>
     </div>
   </div>
+</div><!-- /sms-panel -->
 
 </div><!-- /chatScreen -->
 
@@ -1326,17 +1327,26 @@ code { background: var(--bg); border: 1px solid var(--border); border-radius: 4p
     </div>
     <div class="modal-body">
       <div style="font-size:13px;color:var(--text2);margin-bottom:20px;line-height:1.6">Choose which reports Meridian should auto-draft and how to deliver them.</div>
-      ${[
-        {name:'Daily standup',icon:'🎯',desc:'Drafted before your standup. Sent to Slack or Teams.',key:'standup'},
-        {name:'Blocker report',icon:'🚧',desc:'Auto-triggered when blockers detected in Jira.',key:'blocker'},
-        {name:'Weekly digest',icon:'📊',desc:'Sent every Friday with wins, risks, and metrics.',key:'weekly'},
-        {name:'Stakeholder update',icon:'📋',desc:'Monthly executive summary of your product area.',key:'stakeholder'},
-      ].map(r=>`
-        <div style="display:flex;align-items:center;gap:12px;padding:14px 0;border-bottom:1px solid var(--border2)">
-          <div style="font-size:20px">${r.icon}</div>
-          <div style="flex:1"><div style="font-size:13px;font-weight:700">${r.name}</div><div style="font-size:11px;color:var(--text3);margin-top:2px">${r.desc}</div></div>
-          <label class="toggle"><input type="checkbox" checked><div class="toggle-track"></div><div class="toggle-thumb"></div></label>
-        </div>`).join('')}
+      <div style="display:flex;align-items:center;gap:12px;padding:14px 0;border-bottom:1px solid var(--border2)">
+        <div style="font-size:20px">🎯</div>
+        <div style="flex:1"><div style="font-size:13px;font-weight:700">Daily standup</div><div style="font-size:11px;color:var(--text3);margin-top:2px">Drafted before your standup. Sent to Slack or Teams.</div></div>
+        <label class="toggle"><input type="checkbox" checked><div class="toggle-track"></div><div class="toggle-thumb"></div></label>
+      </div>
+      <div style="display:flex;align-items:center;gap:12px;padding:14px 0;border-bottom:1px solid var(--border2)">
+        <div style="font-size:20px">🚧</div>
+        <div style="flex:1"><div style="font-size:13px;font-weight:700">Blocker report</div><div style="font-size:11px;color:var(--text3);margin-top:2px">Auto-triggered when blockers detected in Jira.</div></div>
+        <label class="toggle"><input type="checkbox" checked><div class="toggle-track"></div><div class="toggle-thumb"></div></label>
+      </div>
+      <div style="display:flex;align-items:center;gap:12px;padding:14px 0;border-bottom:1px solid var(--border2)">
+        <div style="font-size:20px">📊</div>
+        <div style="flex:1"><div style="font-size:13px;font-weight:700">Weekly digest</div><div style="font-size:11px;color:var(--text3);margin-top:2px">Sent every Friday with wins, risks, and metrics.</div></div>
+        <label class="toggle"><input type="checkbox" checked><div class="toggle-track"></div><div class="toggle-thumb"></div></label>
+      </div>
+      <div style="display:flex;align-items:center;gap:12px;padding:14px 0;border-bottom:1px solid var(--border2)">
+        <div style="font-size:20px">📋</div>
+        <div style="flex:1"><div style="font-size:13px;font-weight:700">Stakeholder update</div><div style="font-size:11px;color:var(--text3);margin-top:2px">Monthly executive summary of your product area.</div></div>
+        <label class="toggle"><input type="checkbox" checked><div class="toggle-track"></div><div class="toggle-thumb"></div></label>
+      </div>
       <button class="btn btn-primary" style="width:100%;margin-top:20px" onclick="closeModal('reportModal');showToast('✓ Report settings saved')">Save settings</button>
     </div>
   </div>
@@ -1352,12 +1362,14 @@ code { background: var(--bg); border: 1px solid var(--border); border-radius: 4p
     <div class="modal-body">
       <p style="font-size:13px;color:var(--text3);margin-bottom:20px">Connect your roadmap source of truth so Meridian can read and write items directly.</p>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px">
-        ${[['📋','ProductBoard','Strategy & prioritization'],['🚀','Aha!','Roadmaps & strategy'],['📐','Linear','Issues & projects'],['🎯','Jira','Epics & sprints'],['📝','Notion','Roadmap docs'],['📊','Shortcut','Stories & epics'],['🔷','Productboard','Feature management'],['📌','Trello','Kanban boards']].map(([icon,name,desc])=>`
-        <div class="int-tile" onclick="selectRoadmapTool(this,'${name}')" style="background:var(--bg3);border:1.5px solid var(--border);border-radius:var(--r-sm);padding:12px;cursor:pointer;text-align:center;transition:all .15s">
-          <div style="font-size:20px;margin-bottom:4px">${icon}</div>
-          <div style="font-size:12px;font-weight:700;color:var(--text)">${name}</div>
-          <div style="font-size:10px;color:var(--text3);margin-top:2px">${desc}</div>
-        </div>`).join('')}
+        <div class="int-tile" onclick="selectRoadmapTool(this,'ProductBoard')" style="background:var(--bg3);border:1.5px solid var(--border);border-radius:var(--r-sm);padding:12px;cursor:pointer;text-align:center;transition:all .15s"><div style="font-size:20px;margin-bottom:4px">📋</div><div style="font-size:12px;font-weight:700;color:var(--text)">ProductBoard</div><div style="font-size:10px;color:var(--text3);margin-top:2px">Strategy &amp; prioritization</div></div>
+        <div class="int-tile" onclick="selectRoadmapTool(this,'Aha!')" style="background:var(--bg3);border:1.5px solid var(--border);border-radius:var(--r-sm);padding:12px;cursor:pointer;text-align:center;transition:all .15s"><div style="font-size:20px;margin-bottom:4px">🚀</div><div style="font-size:12px;font-weight:700;color:var(--text)">Aha!</div><div style="font-size:10px;color:var(--text3);margin-top:2px">Roadmaps &amp; strategy</div></div>
+        <div class="int-tile" onclick="selectRoadmapTool(this,'Linear')" style="background:var(--bg3);border:1.5px solid var(--border);border-radius:var(--r-sm);padding:12px;cursor:pointer;text-align:center;transition:all .15s"><div style="font-size:20px;margin-bottom:4px">📐</div><div style="font-size:12px;font-weight:700;color:var(--text)">Linear</div><div style="font-size:10px;color:var(--text3);margin-top:2px">Issues &amp; projects</div></div>
+        <div class="int-tile" onclick="selectRoadmapTool(this,'Jira')" style="background:var(--bg3);border:1.5px solid var(--border);border-radius:var(--r-sm);padding:12px;cursor:pointer;text-align:center;transition:all .15s"><div style="font-size:20px;margin-bottom:4px">🎯</div><div style="font-size:12px;font-weight:700;color:var(--text)">Jira</div><div style="font-size:10px;color:var(--text3);margin-top:2px">Epics &amp; sprints</div></div>
+        <div class="int-tile" onclick="selectRoadmapTool(this,'Notion')" style="background:var(--bg3);border:1.5px solid var(--border);border-radius:var(--r-sm);padding:12px;cursor:pointer;text-align:center;transition:all .15s"><div style="font-size:20px;margin-bottom:4px">📝</div><div style="font-size:12px;font-weight:700;color:var(--text)">Notion</div><div style="font-size:10px;color:var(--text3);margin-top:2px">Roadmap docs</div></div>
+        <div class="int-tile" onclick="selectRoadmapTool(this,'Shortcut')" style="background:var(--bg3);border:1.5px solid var(--border);border-radius:var(--r-sm);padding:12px;cursor:pointer;text-align:center;transition:all .15s"><div style="font-size:20px;margin-bottom:4px">📊</div><div style="font-size:12px;font-weight:700;color:var(--text)">Shortcut</div><div style="font-size:10px;color:var(--text3);margin-top:2px">Stories &amp; epics</div></div>
+        <div class="int-tile" onclick="selectRoadmapTool(this,'Trello')" style="background:var(--bg3);border:1.5px solid var(--border);border-radius:var(--r-sm);padding:12px;cursor:pointer;text-align:center;transition:all .15s"><div style="font-size:20px;margin-bottom:4px">📌</div><div style="font-size:12px;font-weight:700;color:var(--text)">Trello</div><div style="font-size:10px;color:var(--text3);margin-top:2px">Kanban boards</div></div>
+        <div class="int-tile" onclick="selectRoadmapTool(this,'Asana')" style="background:var(--bg3);border:1.5px solid var(--border);border-radius:var(--r-sm);padding:12px;cursor:pointer;text-align:center;transition:all .15s"><div style="font-size:20px;margin-bottom:4px">✅</div><div style="font-size:12px;font-weight:700;color:var(--text)">Asana</div><div style="font-size:10px;color:var(--text3);margin-top:2px">Tasks &amp; projects</div></div>
       </div>
       <div id="rdmap-tool-api-wrap" style="display:none;margin-bottom:16px">
         <label class="field-label" style="font-size:11px;font-weight:700;color:var(--text2);display:block;margin-bottom:5px" id="rdmap-tool-label">API Key</label>

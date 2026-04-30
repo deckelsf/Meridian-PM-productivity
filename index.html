@@ -1711,13 +1711,13 @@ function renderComms() {
   document.getElementById('actionsList').innerHTML = `
     <div style="padding:16px 0">
       ${[
-        {t:'Sign off on rate limiting policy', from:'#eng-platform', urgency:'Today', color:var='--red'},
-        {t:'Respond to VP of Sales re: Q3 roadmap', from:'Email', urgency:'Today', color:'--red'},
-        {t:'Review mobile nav designs', from:'Emily @ Slack', urgency:'This week', color:'--yellow'},
-        {t:'Create Jira ticket from NPS feedback', from:'Email digest', urgency:'This week', color:'--yellow'},
+        {t:'Sign off on rate limiting policy', from:'#eng-platform', urgency:'Today', color:'var(--red)'},
+        {t:'Respond to VP of Sales re: Q3 roadmap', from:'Email', urgency:'Today', color:'var(--red)'},
+        {t:'Review mobile nav designs', from:'Emily @ Slack', urgency:'This week', color:'var(--yellow)'},
+        {t:'Create Jira ticket from NPS feedback', from:'Email digest', urgency:'This week', color:'var(--yellow)'},
       ].map(a => `
         <div style="padding:12px 0;border-bottom:1px solid var(--border2);display:flex;align-items:center;gap:12px">
-          <div style="width:8px;height:8px;border-radius:50%;background:var(${a.color});flex-shrink:0"></div>
+          <div style="width:8px;height:8px;border-radius:50%;background:${a.color};flex-shrink:0"></div>
           <div style="flex:1">
             <div style="font-size:13px;font-weight:600">${a.t}</div>
             <div style="font-size:11px;color:var(--text3)">${a.from} · ${a.urgency}</div>

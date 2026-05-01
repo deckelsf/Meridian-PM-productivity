@@ -1,0 +1,23 @@
+{
+  "version": 2,
+  "builds": [
+    { "src": "api/**/*.js", "use": "@vercel/node" },
+    { "src": "public/**", "use": "@vercel/static" }
+  ],
+  "routes": [
+    { "src": "/api/(.*)", "dest": "/api/$1" },
+    { "src": "/(.*)", "dest": "/public/$1" }
+  ],
+  "env": {
+    "SLACK_CLIENT_ID": "@slack_client_id",
+    "SLACK_CLIENT_SECRET": "@slack_client_secret",
+    "GOOGLE_CLIENT_ID": "@google_client_id",
+    "GOOGLE_CLIENT_SECRET": "@google_client_secret",
+    "JIRA_CLIENT_ID": "@jira_client_id",
+    "JIRA_CLIENT_SECRET": "@jira_client_secret",
+    "GITHUB_CLIENT_ID": "@github_client_id",
+    "GITHUB_CLIENT_SECRET": "@github_client_secret",
+    "JWT_SECRET": "@jwt_secret",
+    "APP_URL": "@app_url"
+  }
+}

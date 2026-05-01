@@ -1,0 +1,18 @@
+{
+  "name": "meridian-pm-os",
+  "version": "1.0.0",
+  "description": "Meridian PM OS — Vercel backend for real integrations",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vercel dev",
+    "deploy": "vercel --prod"
+  },
+  "dependencies": {
+    "axios": "^1.6.0",
+    "jsonwebtoken": "^9.0.2",
+    "cookie": "^0.6.0"
+  },
+  "devDependencies": {
+    "vercel": "^33.0.0"
+  }
+}
